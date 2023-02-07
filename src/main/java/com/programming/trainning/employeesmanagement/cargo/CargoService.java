@@ -23,6 +23,15 @@ public class CargoService {
         logger.info("cadastrando um novo cargo com a descricao: {}", cargoRequest.getDescription());
 
         Cargo cargo = cargoRequest.toModel();
+
+        boolean exists = cargoRepository.existsByDescription(cargo.getDescription());
+        if (exists) {
+            String mensagem = "Cargo com a descricao: " + cargo.getDescription() + " já existe. Verificar.";
+            Integer code = 1;
+            String entityName = "CARGO";
+            throw new EntityAlreadyExistsException(mensagem, code, entityName);
+        }
+
         cargo = cargoRepository.save(cargo);
 
         logger.info("cargo com a descricao: {} cadastrada com sucesso", cargoRequest.getDescription());
