@@ -35,4 +35,5 @@ public class CargoController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(cargoResponse);
     }
+
 }

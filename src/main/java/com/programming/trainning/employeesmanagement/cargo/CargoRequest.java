@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class CargoRequest {
 
-    @NotBlank(message = "description is required 123")
+    @NotBlank(message = "description is required")
     @JsonProperty(value = "description")
     private String description;
 
@@ -25,6 +25,6 @@ public class CargoRequest {
     }
 
     public Cargo toModel() {
-        return new Cargo(description);
+        return new Cargo(description.toUpperCase().trim());
     }
 }
