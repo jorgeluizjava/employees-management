@@ -23,6 +23,10 @@ public class Cargo {
     public Cargo() {
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Cargo(String description) {
         if (StringUtils.isEmpty(description)) {
             throw new IllegalStateException("descricao é obrigatório");
